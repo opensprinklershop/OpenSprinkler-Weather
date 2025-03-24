@@ -13,7 +13,7 @@ export default class DWDWeatherProvider extends WeatherProvider {
 	}
 
 	public async getWateringData( coordinates: GeoCoordinates ): Promise< ZimmermanWateringData > {
-		const yesterdayTimestamp: string = moment().subtract( 1, "day" ).utc().format("YYYY-MM-DD[T]HH");
+		const yesterdayTimestamp: string = moment().subtract( 1, "day" ).utc().format("YYYY-MM-DD[T]HH:mm:ss[Z]");
 		console.log("DWD getWateringData request for coordinates: %s", coordinates);
 
 		//const yesterdayUrl = `https://api.darksky.net/forecast/${ this.API_KEY }/${ coordinates[ 0 ] },${ coordinates[ 1 ] },${ yesterdayTimestamp }?exclude=currently,minutely,daily,alerts,flags`;
@@ -177,7 +177,7 @@ export default class DWDWeatherProvider extends WeatherProvider {
 
 		console.log("DWD getEToData request for coordinates: %s", coordinates);
 		
-		const timestamp: string = moment().subtract( 1, "day" ).utc().format("YYYY-MM-DD[T]HH");
+		const timestamp: string = moment().subtract( 1, "day" ).utc().format("YYYY-MM-DD[T]HH:mm:ss[Z]");
 		const historicUrl = `https://api.brightsky.dev/weather?lat=${ coordinates[ 0 ] }&lon=${ coordinates[ 1 ] }&date=${ timestamp }`;
 		console.log(historicUrl);
  
